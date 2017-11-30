@@ -9,7 +9,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
  * A Page type.
  *
  * @GraphQLType(
- *   id = "basicpage",
+ *   id = "basic_page",
  *   name = "BasicPage",
  *   interfaces = {"Page"},
  * )

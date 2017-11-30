@@ -24,7 +24,7 @@ class Page implements PageInterface {
    * {@inheritdoc}
    */
   public function addPage(array $page, $nid = NULL){
-    return NULL;
+    return $page;
   }
 
 

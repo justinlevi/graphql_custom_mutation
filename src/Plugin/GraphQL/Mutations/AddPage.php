@@ -30,7 +30,7 @@ class AddPage extends MutationPluginBase implements ContainerFactoryPluginInterf
    *
    * @var \Drupal\custom_graphql_mutation\PageInterface
    */
-  protected $page;
+  protected $page = [];
 
   /**
    * {@inheritdoc}

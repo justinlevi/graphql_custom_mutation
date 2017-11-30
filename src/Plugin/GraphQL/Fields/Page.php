@@ -17,7 +17,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
  *   secure = true,
  *   name = "page",
  *   type = "BasicPage",
- *   multi = true
+ *   multi = false
  * )
  */
 class Page extends FieldPluginBase implements ContainerFactoryPluginInterface {

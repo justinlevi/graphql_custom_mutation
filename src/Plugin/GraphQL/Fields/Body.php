@@ -13,6 +13,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
  *   secure = true,
  *   name = "body",
  *   type = "String",
+ *   parents = {"Page"}
  * )
  */
 class Body extends FieldPluginBase {

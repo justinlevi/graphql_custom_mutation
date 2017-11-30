@@ -13,6 +13,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
  *   secure = true,
  *   name = "title",
  *   type = "String",
+ *   parents = {"Page"}
  * )
  */
 class Title extends FieldPluginBase {

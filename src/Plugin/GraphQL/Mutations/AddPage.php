@@ -18,7 +18,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
  *   name = "addPage",
  *   type = "BasicPage",
  *   arguments = {
- *     "page" = "PageInput"
+ *     "basicpage" = "BasicPageInput"
  *   }
  * )
  */
@@ -36,7 +36,7 @@ class AddPage extends MutationPluginBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function resolve($value, array $args, ResolveInfo $info) {
-    return $this->page->addPage($args['page']);
+    return $this->page->addPage($args['basicpage']);
   }
 
   /**

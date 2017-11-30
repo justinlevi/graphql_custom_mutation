@@ -8,14 +8,13 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  * Page input type.
  *
  * @GraphQLInputType(
- *   id = "page_input",
- *   name = "PageInput",
+ *   id = "basic_page_input",
+ *   name = "BasicPageInput",
  *   fields = {
- *     "title" = "String",
- *     "body" = "String"
+ *     "title" = "String"
  *   }
  * )
  */
-class PageInput extends InputTypePluginBase {
+class BasicPageInput extends InputTypePluginBase {
 
 }

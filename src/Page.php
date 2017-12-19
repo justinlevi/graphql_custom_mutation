@@ -3,6 +3,7 @@
 
 namespace Drupal\custom_graphql_mutation;
 
+use Drupal\node\Entity\Node;
 
 /**
  * Page implementation.
@@ -23,8 +24,23 @@ class Page implements PageInterface {
   /**
    * {@inheritdoc}
    */
-  public function addPage(array $page, $nid = NULL){
+  public function addPage($page, $nid = NULL){
+    //return $page;
+
+    $node = Node::create(array(
+      'type' => 'page',
+      'title' => $page['title'],
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => '1',
+      'body' => $page['body'],
+    ));
+    $node->save();
+
+    $page['nid'] = (Int)$node->id();
+
     return $page;
+
   }
 
 

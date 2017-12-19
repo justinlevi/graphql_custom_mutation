@@ -6,6 +6,7 @@ use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\graphql\Plugin\GraphQL\Fields\FieldPluginBase;
 use Drupal\custom_graphql_mutation\PageInterface;
+use Drupal\graphql\Plugin\GraphQL\PluggableSchemaBuilderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Youshido\GraphQL\Execution\ResolveInfo;
 
@@ -54,4 +55,16 @@ class Page extends FieldPluginBase implements ContainerFactoryPluginInterface {
     parent::__construct($configuration, $pluginId, $pluginDefinition);
   }
 
+  /**
+   * Returns the plugin's type or field definition for the schema.
+   *
+   * @param \Drupal\graphql\Plugin\GraphQL\PluggableSchemaBuilderInterface $schemaBuilder
+   *   The schema builder.
+   *
+   * @return \Youshido\GraphQL\Field\AbstractField|\Youshido\GraphQL\Type\AbstractType
+   *   The type or field definition of the plugin.
+   */
+  public function getDefinition(PluggableSchemaBuilderInterface $schemaBuilder) {
+    // TODO: Implement getDefinition() method.
+  }
 }

@@ -28,7 +28,7 @@ interface PageInterface {
    * @return int
    *   The nid of the page.
    */
-  public function addPage(array $page, $nid = NULL);
+  public function addPage($page, $nid = NULL);
 
 
   /**

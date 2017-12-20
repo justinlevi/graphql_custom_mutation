@@ -1,5 +1,5 @@
 services:
-  graphql_page_mutation.current_time:
-    class: Drupal\custom_graphql_mutation\CurrentTime
   graphql_page_mutation.page:
-    class: Drupal\custom_graphql_mutation\Page
+    class: Drupal\custom_graphql_mutation\PageService
+    arguments: []
+

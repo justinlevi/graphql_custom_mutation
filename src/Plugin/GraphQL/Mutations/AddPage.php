@@ -2,56 +2,38 @@
 
 namespace Drupal\custom_graphql_mutation\Plugin\GraphQL\Mutations;
 
-use Drupal\Core\DependencyInjection\DependencySerializationTrait;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\graphql\Plugin\GraphQL\Mutations\MutationPluginBase;
-use Drupal\custom_graphql_mutation\PageInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Youshido\GraphQL\Execution\ResolveInfo;
+
+use Drupal\graphql\Annotation\GraphQLMutation;
+use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
+use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\CreateEntityBase;
+
 
 /**
- * A NodePage mutation.
+ *  A Simple PageNode mutation.
  *
  * @GraphQLMutation(
  *   id = "add_page",
+ *   entity_type = "node",
+ *   entity_bundle = "page",
  *   secure = true,
- *   name = "addPage",
- *   type = "BasicPage",
+ *   name = "page",
+ *   type = "EntityCrudOutput",
  *   arguments = {
- *     "basicpage" = "BasicPageInput"
+ *      "input" = "BasicPageInput"
  *   }
  * )
  */
-class AddPage extends MutationPluginBase implements ContainerFactoryPluginInterface {
-  use DependencySerializationTrait;
-
-  /**
-   * The page.
-   *
-   * @var \Drupal\custom_graphql_mutation\PageInterface
-   */
-  protected $page = [];
+class AddPage extends CreateEntityBase {
 
   /**
    * {@inheritdoc}
    */
-  public function resolve($value, array $args, ResolveInfo $info) {
-    return $this->page->addPage($args['basicpage']);
-  }
+  protected function extractEntityInput(array $inputArgs, InputTypePluginBase $inputType) {
 
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $pluginId, $pluginDefinition) {
-    return new static($configuration, $pluginId, $pluginDefinition, $container->get('graphql_page_mutation.page'));
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(array $configuration, $pluginId, $pluginDefinition, PageInterface $page) {
-    $this->page = $page;
-    parent::__construct($configuration, $pluginId, $pluginDefinition);
+    return [
+      'title' => $inputArgs['title'] . ' : ' . date('Y-m-d H:ia'),
+      'body' => $inputArgs['body']
+    ];
   }
 
 }

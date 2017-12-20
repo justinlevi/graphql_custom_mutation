@@ -1,5 +1,7 @@
-name: Custom GraphQL Mutation
+name: custom_graphql_mutation
 type: module
-description: A Custom GraphQL Mutation Schema & Plugin
+description: A custom GraphQL Mutation
 core: 8.x
 package: Custom
+dependencies:
+  - graphql

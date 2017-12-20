@@ -11,9 +11,11 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   id = "basic_page_input",
  *   name = "BasicPageInput",
  *   fields = {
- *     "nid" = "Int",
  *     "title" = "String",
- *     "body" = "String"
+ *     "body" = {
+ *        "type" = "String",
+ *        "nullable" = "TRUE"
+ *     }
  *   }
  * )
  */

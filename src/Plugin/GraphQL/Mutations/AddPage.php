@@ -31,7 +31,7 @@ class AddPage extends CreateEntityBase {
   protected function extractEntityInput(array $inputArgs, InputTypePluginBase $inputType) {
 
     return [
-      'title' => $inputArgs['title'] . ' : ' . date('Y-m-d H:ia'),
+      'title' => $inputArgs['title'],
       'body' => $inputArgs['body']
     ];
   }

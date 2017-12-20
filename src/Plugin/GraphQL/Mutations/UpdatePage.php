@@ -5,25 +5,26 @@ namespace Drupal\custom_graphql_mutation\Plugin\GraphQL\Mutations;
 
 use Drupal\graphql\Annotation\GraphQLMutation;
 use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
-use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\CreateEntityBase;
+use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\UpdateEntityBase;
 
 
 /**
  *  A Simple PageNode mutation.
  *
  * @GraphQLMutation(
- *   id = "add_page",
+ *   id = "update_page",
  *   entity_type = "node",
  *   entity_bundle = "page",
  *   secure = true,
- *   name = "addPage",
+ *   name = "updatePage",
  *   type = "EntityCrudOutput",
  *   arguments = {
- *      "input" = "BasicPageInput"
+ *     "id" = "Int",
+ *     "input" = "BasicPageInput"
  *   }
  * )
  */
-class AddPage extends CreateEntityBase {
+class UpdatePage extends UpdateEntityBase {
 
   /**
    * {@inheritdoc}
@@ -31,7 +32,7 @@ class AddPage extends CreateEntityBase {
   protected function extractEntityInput(array $inputArgs, InputTypePluginBase $inputType) {
 
     return [
-      'title' => $inputArgs['title'] . ' : ' . date('Y-m-d H:ia'),
+      'title' => $inputArgs['title'],
       'body' => $inputArgs['body']
     ];
   }

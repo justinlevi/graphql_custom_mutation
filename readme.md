@@ -1,15 +1,18 @@
-An example of a simple basic page mutation
+A simple example of a basic page mutation
 
 
 
-
-MUTATION
+ADD MUTATION
 ```$xslt
 mutation {
-  page(input:{title:"Helo", body:"World"}){
+  addPage(input:{title:"Hello", body:"World"}){
     entity{
       ...on NodePage {
+        nid
         title
+        body{
+          value
+        }
       }
     }
   }
@@ -22,9 +25,90 @@ RESULT
 ```$xslt
 {
   "data": {
-    "page": {
+    "addPage": {
       "entity": {
-        "title": "Hello"
+        "nid": 111,
+        "title": "Hello",
+        "body": {
+          "value": "World"
+        }
+      }
+    }
+  }
+}
+```
+
+
+---
+
+
+UPDATE MUTATION
+
+```$xslt
+mutation {
+  updatePage(id:110, input:{title:"Justin"}){
+    entity{
+      ...on NodePage {
+        nid
+        title
+        body{
+          value
+        }
+      }
+    }
+  }
+}
+```
+
+
+RESULT
+```$xslt
+{
+  "data": {
+    "updatePage": {
+      "entity": {
+        "nid": 111,
+        "title": "Justin",
+        "body": null
+      }
+    }
+  }
+}
+```
+
+
+---
+
+
+DELETE MUTATION
+```$xslt
+mutation {
+  deletePage(id:111){
+    entity{
+      ...on NodePage {
+        nid
+        title
+        body{
+          value
+        }
+      }
+    }
+  }
+}
+
+```
+
+
+RESULT
+
+```$xslt
+{
+  "data": {
+    "deletePage": {
+      "entity": {
+        "nid": 111,
+        "title": "Justin",
+        "body": null
       }
     }
   }

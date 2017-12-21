@@ -1,5 +1,0 @@
-services:
-  graphql_page_mutation.page:
-    class: Drupal\custom_graphql_mutation\PageService
-    arguments: []
-
